@@ -1,0 +1,26 @@
+<div class="flex justify-center my-10">
+    <div class="card bg-base-100 w-96 shadow-xl">
+        <div class="card-body">
+            <h2 class="card-title">LogIn</h2>
+            <div>
+                <label class="form-control w-full max-w-xs my-4">
+                    <div class="label">
+                        <span class="label-text">Email</span>
+                    </div>
+                    <input type="email" placeholder="Please enter your email Id"
+                        class="input input-bordered w-full max-w-xs" [(ngModel)]="email" />
+                </label>
+                <label class="form-control w-full max-w-xs my-4">
+                    <div class="label">
+                        <span class="label-text">Password</span>
+                    </div>
+                    <input type="password" placeholder="Please enter your password"
+                        class="input input-bordered w-full max-w-xs" [(ngModel)]="password" />
+                </label>
+            </div>
+            <div class="card-actions justify-center">
+                <button class="btn btn-primary" (click)="login()">LogIn</button>
+            </div>
+        </div>
+    </div>
+</div>
