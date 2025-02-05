@@ -1,0 +1,28 @@
+<div class="flex justify-center my-4 mx-4">
+    <div class="w-[70%]">
+        <p class="text-bold text-center text-2xl">Requests</p>
+        <div *ngIf="!requests.length; else elseBlock">
+            <p>No Requests Found</p>
+        </div>
+        <ng-template #elseBlock>
+            <div *ngFor="let request of requests" class="grid grid-cols-[120px_auto_auto] items-center justify-between bg-base-300 w-[100%] my-4">
+                <div class="flex items-center">
+                    <img class="w-[100px] h-[100px] rounded-md" [src]="request.fromUserId.photoUrl">
+                </div>
+                <div class="text-left">
+                    <h2 class="text-bold text-2xl mb-2">{{request.fromUserId.firstName}}
+                        {{request.fromUserId.lastName}}</h2>
+                    <p *ngIf="request.fromUserId.age && request.fromUserId.gender">
+                        {{request.fromUserId.gender}},
+                        {{request.fromUserId.age}}
+                    </p>
+                    <p>{{request.fromUserId.about}}</p>
+                </div>
+                <div class="flex gap-2 mx-2">
+                    <button class="btn btn-primary" (click)="reviewRequests('rejected',request._id)">Reject</button>
+                    <button class="btn btn-secondary" (click)="reviewRequests('accepted',request._id)">Accept</button>
+                </div>
+            </div>
+        </ng-template>
+    </div>
+</div>

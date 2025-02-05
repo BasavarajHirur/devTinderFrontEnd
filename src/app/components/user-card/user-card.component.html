@@ -1,0 +1,14 @@
+<div *ngIf="user" class="card bg-base-300 w-80 shadow-xl">
+    <figure>
+        <img class="w-40 h-50 my-2 rounded-md" [src]="user?.photoUrl" alt="Shoes" />
+    </figure>
+    <div class="card-body">
+        <h2 class="card-title">{{user.firstName}} {{user.lastName}}</h2>
+        <p *ngIf="user.gender && user.age">{{user.gender}}, {{user.age}}</p>
+        <p class="text-left text-white-200">{{user.about}}</p>
+        <div class="card-actions flex justify-center my-4">
+            <button class="btn btn-primary" (click)="sendRequest('ignored', user._id)">ignore</button>
+            <button class="btn btn-secondary" (click)="sendRequest('interested', user._id)">interested</button>
+        </div>
+    </div>
+</div>

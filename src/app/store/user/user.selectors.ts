@@ -1,14 +1,19 @@
 import { createFeatureSelector, createSelector } from "@ngrx/store";
-import { InitialState } from "./user.reducer";
+import { UserInitialState } from "./user.reducer";
 
-const selectState = createFeatureSelector<InitialState>('commonData');
+const selectState = createFeatureSelector<UserInitialState>('userData');
 
-export const selectLogInResponse = createSelector(
+export const selectUserFeeds = createSelector(
     selectState,
-    (state: InitialState) => state.loginRes
-)
+    (state: UserInitialState) => state.userFeeds
+);
 
-export const selectSignUpResponse = createSelector(
+export const selectConnections = createSelector(
     selectState,
-    (state: InitialState) => state.signupRes
-)
+    (state: UserInitialState) => state.connections
+);
+
+export const selectReceivedRequests = createSelector(
+    selectState,
+    (state: UserInitialState) => state.receivedRequests
+);

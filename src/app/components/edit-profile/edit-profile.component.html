@@ -1,0 +1,90 @@
+<div class="flex justify-center gap-4 my-4" *ngIf="!userData; else elseBlock">
+    <app-register-form-shimmer></app-register-form-shimmer>
+    <app-user-card-shimmer></app-user-card-shimmer>
+</div>
+<ng-template #elseBlock>
+    <div class="my-4">
+        <div class="flex justify-center gap-4">
+            <div class="flex justify-center">
+                <form [formGroup]="formGroup">
+                    <div class="card bg-base-300 w-96 shadow-xl">
+                        <div class="card-body">
+                            <h2 class="card-title">Edit Profile</h2>
+                            <div>
+                                <label class=" flex form-control w-full max-w-xs my-4">
+                                    <div class="label">
+                                        <span class="label-text">First Name</span>
+                                    </div>
+                                    <input type="text" placeholder="Please enter your First name"
+                                        class="input input-bordered w-full max-w-xs" formControlName="firstName" />
+                                </label>
+                                <label class="flex form-control w-full max-w-xs my-4">
+                                    <div class="label">
+                                        <span class="label-text">Last Name</span>
+                                    </div>
+                                    <input type="text" placeholder="Please enter your Last name"
+                                        class="input input-bordered w-full max-w-xs" formControlName="lastName" />
+                                </label>
+                                <label class="flex form-control w-full max-w-xs my-4">
+                                    <div class="label">
+                                        <span class="label-text">Age</span>
+                                    </div>
+                                    <input type="text" placeholder="Please enter your age in number"
+                                        class="input input-bordered w-full max-w-xs" formControlName="age" />
+                                </label>
+                                <label class="flex form-control w-full max-w-xs my-4">
+                                    <div class="label">
+                                        <span class="label-text">Skills</span>
+                                    </div>
+                                    <input type="text" placeholder="Please enter your skills with comma seperate"
+                                        class="input input-bordered w-full max-w-xs" formControlName="skills" />
+                                </label>
+                                <label class="flex form-control w-full max-w-xs my-4">
+                                    <div class="label">
+                                        <span class="label-text">About</span>
+                                    </div>
+                                    <input type="text" placeholder="Please enter about yourself"
+                                        class="input input-bordered w-full max-w-xs" formControlName="about" />
+                                </label>
+                                <label class="flex form-control w-full max-w-xs my-4">
+                                    <div class="label">
+                                        <span class="label-text">Gender</span>
+                                    </div>
+                                    <div class="dropdown">
+                                        <div tabindex="0" role="button" class="btn m-1">
+                                            {{formGroup.controls['gender'].value || 'select gender'}}
+                                        </div>
+                                        <ul tabindex="0"
+                                            class="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+                                            <li *ngFor="let option of allowableGenders"
+                                                (click)="formGroup.controls['gender'].setValue(option.value)">
+                                                <a>{{option.label}}</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </label>
+                                <label class="flex row form-control w-full max-w-xs my-4">
+                                    <div class="label">
+                                        <span class="label-text">PhotoUrl</span>
+                                    </div>
+                                    <input type="text" placeholder="Please add photoUrl"
+                                        class="input input-bordered w-full max-w-xs" formControlName="photoUrl" />
+                                </label>
+                            </div>
+                            <p class="text-red-500">{{error}}</p>
+                            <div class="card-actions justify-center">
+                                <button class="btn btn-primary" (click)="updateProfile()">Update</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <app-user-card [user]="userData"></app-user-card>
+        </div>
+        <div *ngIf="showToster" class="toast toast-top toast-center">
+            <div class="alert alert-success">
+                <span>{{toasterMessage}}</span>
+            </div>
+        </div>
+    </div>
+</ng-template>

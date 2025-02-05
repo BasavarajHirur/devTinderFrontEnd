@@ -1,27 +1,49 @@
 import { createAction, props } from "@ngrx/store";
 
-const CONNECTIONS = '[user action] connections';
-const SIGNUP_SUCCESS = '[common action] signup success';
+const LOAD_USER_FEED = '[user action] load user feeds';
+const GET_USER_FEED = '[user action] get user feeds';
+const UPDATE_USER_FEED = '[user action] update user feed';
 
-const LOGIN = '[common action] login';
-const LOGIN_RESULT = '[common action] login result';
+const LOAD_CONNECTIONS = '[user action] load connections';
+const GET_CONNECTIONS = '[user action] get connections';
 
-export const connections = createAction(
-    CONNECTIONS,
-    props<{ connectionRes: any }>()
+const LOAD_RECIEVED_REQUESTS = '[user action] load received requests';
+const GET_RECIEVED_REQUESTS = '[user action] get received requests';
+const UPDATE_RECEIVED_REQUESTS = '[user action] update received requests';
+
+export const loadUserFeed = createAction(
+    LOAD_USER_FEED
 )
 
-export const signupResult = createAction(
-    SIGNUP_SUCCESS,
-    props<{ signupRes: any }>()
+export const getUserFeed = createAction(
+    GET_USER_FEED,
+    props<{ userFeeds: any }>()
 )
 
-export const login = createAction(
-    LOGIN,
-    props<{ loginDetails: any }>()
+export const loadConnections = createAction(
+    LOAD_CONNECTIONS
 )
 
-export const loginResult = createAction(
-    LOGIN_RESULT,
-    props<{ loginRes: any }>()
+export const getConnections = createAction(
+    GET_CONNECTIONS,
+    props<{ connections: any }>()
+)
+
+export const loadReceivedRequests = createAction(
+    LOAD_RECIEVED_REQUESTS
+)
+
+export const getReceivedRequests = createAction(
+    GET_RECIEVED_REQUESTS,
+    props<{ receivedRequests: any }>()
+)
+
+export const updateUserFeeds = createAction(
+    UPDATE_USER_FEED,
+    props<{ userId: any }>()
+)
+
+export const updateReceivedRequests = createAction(
+    UPDATE_RECEIVED_REQUESTS,
+    props<{ requestId: any }>()
 )

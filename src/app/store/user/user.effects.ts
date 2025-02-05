@@ -1,29 +1,40 @@
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { login, loginResult, signupResult } from "./user.actions";
+import { getConnections, getReceivedRequests, getUserFeed, loadConnections, loadReceivedRequests, loadUserFeed } from "./user.actions";
 import { catchError, map, of, switchMap } from "rxjs";
 import { Injectable } from "@angular/core";
+import { UserService } from "src/app/service/user/user.service";
 
 @Injectable()
-export class commonEfects {
-    constructor(private action$: Actions) { }
+export class UserEfects {
+    constructor(private action$: Actions, private service: UserService) { }
 
-    // public signup$ = createEffect(() => {
-    //     return this.action$.pipe(
-    //         ofType(signup),
-    //         switchMap(({ signupDetails }) => this.service.signUp(signupDetails).pipe(
-    //             map((signupRes) => signupResult({ signupRes })),
-    //             catchError((error) => of(loginResult({ loginRes: error })))
-    //         ))
-    //     )
-    // })
+    public userFeed$ = createEffect(() => {
+        return this.action$.pipe(
+            ofType(loadUserFeed),
+            switchMap(() => this.service.feedUsers().pipe(
+                map((userFeeds) => getUserFeed({ userFeeds })),
+                catchError((error) => of())
+            ))
+        )
+    })
 
-    // public login$ = createEffect(() => {
-    //     return this.action$.pipe(
-    //         ofType(login),
-    //         switchMap(({ loginDetails }) => this.service.login(loginDetails).pipe(
-    //             map((loginRes) => loginResult({ loginRes })),
-    //             catchError((error) => of(loginResult({ loginRes: error })))
-    //         ))
-    //     )
-    // })
+    public loadConnections$ = createEffect(() => {
+        return this.action$.pipe(
+            ofType(loadConnections),
+            switchMap(() => this.service.connections().pipe(
+                map((connections) => getConnections({ connections })),
+                catchError((error) => of())
+            ))
+        )
+    })
+
+    public loadReceivedRequests$ = createEffect(() => {
+        return this.action$.pipe(
+            ofType(loadReceivedRequests),
+            switchMap(() => this.service.recievedRequests().pipe(
+                map((receivedRequests) => getReceivedRequests({ receivedRequests })),
+                catchError((error) => of())
+            ))
+        )
+    })
 }

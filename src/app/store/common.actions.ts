@@ -1,10 +1,11 @@
 import { createAction, props } from "@ngrx/store";
 
 const SIGNUP = '[common action] signup';
-const SIGNUP_SUCCESS = '[common action] signup success';
+const SIGNUP_RESPONSE = '[common action] signup response';
 
 const LOGIN = '[common action] login';
-const LOGGED_IN_USER = '[common action] logged in user';
+const LOGIN_RESPONSE = '[common action] login response';
+const LOGOUT = '[common action] logout';
 
 export const signup = createAction(
     SIGNUP,
@@ -12,7 +13,7 @@ export const signup = createAction(
 )
 
 export const signupResult = createAction(
-    SIGNUP_SUCCESS,
+    SIGNUP_RESPONSE,
     props<{ signupRes: any }>()
 )
 
@@ -21,7 +22,11 @@ export const login = createAction(
     props<{ loginDetails: any }>()
 )
 
-export const loginResult = createAction(
-    LOGGED_IN_USER,
-    props<{ loggedInUser: any }>()
+export const logInResult = createAction(
+    LOGIN_RESPONSE,
+    props<{ loginRes: any }>()
+)
+
+export const logout = createAction(
+    LOGOUT
 )

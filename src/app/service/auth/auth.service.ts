@@ -11,10 +11,14 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   signUp(signUpDetails: any): Observable<any> {
-    return this.http.post(BASE_URL + '/signup', signUpDetails);
+    return this.http.post(BASE_URL + '/signup', signUpDetails, { withCredentials: true });
   }
 
   login(loginDetails: any): Observable<any> {
     return this.http.post(BASE_URL + '/login', loginDetails, { withCredentials: true });
+  }
+
+  logout(): Observable<any> {
+    return this.http.post(BASE_URL + '/logout', {}, { withCredentials: true });
   }
 }

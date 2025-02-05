@@ -1,1 +1,8 @@
-<p>feed works!</p>
+<div *ngIf="!(users && users.length); else elseBlock">
+    <h2 class="text-bold text-2xl text-center my-5">No more users found</h2>
+</div>
+<ng-template #elseBlock>
+    <div class="flex justify-center my-5 gap-2">
+        <app-user-card [user]="users[0]"></app-user-card>
+    </div>
+</ng-template>
