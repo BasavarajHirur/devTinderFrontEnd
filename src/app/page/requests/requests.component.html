@@ -5,7 +5,7 @@
             <p>No Requests Found</p>
         </div>
         <ng-template #elseBlock>
-            <div *ngFor="let request of requests" class="grid grid-cols-[120px_auto_auto] items-center justify-between bg-base-300 w-[100%] my-4">
+            <div *ngFor="let request of requests" class="grid grid-cols-[120px_auto_auto] items-center justify-between bg-base-300 w-[100%] my-4 request-div">
                 <div class="flex items-center">
                     <img class="w-[100px] h-[100px] rounded-md" [src]="request.fromUserId.photoUrl">
                 </div>

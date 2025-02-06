@@ -16,12 +16,12 @@ export const authGuardGuard: CanActivateFn = (route, state) => {
         store.dispatch(getProfile({ profileDetails: res }));
         return true;
       }
-      router.navigate(['/login'])
+      router.navigate(['/landing'])
       return false;
     }),
     catchError(error => {
       console.log(error);
-      router.navigate(['/login'])
+      router.navigate(['/landing'])
       return of(false);
     })
   )

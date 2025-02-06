@@ -23,6 +23,8 @@ import { requestsReducer } from './store/connectionRequests/requests.reducer';
 import { RequestEfects } from './store/connectionRequests/requests.effects';
 import { UserCardShimmerComponent } from './components/shimmers/user-card-shimmer/user-card-shimmer.component';
 import { RegisterFormShimmerComponent } from './components/shimmers/register-form-shimmer/register-form-shimmer.component';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { FeaturesComponent } from './components/features/features.component';
 
 @NgModule({
     declarations: [
@@ -38,7 +40,9 @@ import { RegisterFormShimmerComponent } from './components/shimmers/register-for
         ConnectionsComponent,
         RequestsComponent,
         UserCardShimmerComponent,
-        RegisterFormShimmerComponent
+        RegisterFormShimmerComponent,
+        LandingPageComponent,
+        FeaturesComponent
     ],
     imports: [
         BrowserModule,

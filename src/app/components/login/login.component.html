@@ -1,58 +1,62 @@
-<app-nav-bar></app-nav-bar>
-<div class="flex justify-center my-10">
-    <div class="card bg-base-300 w-96 shadow-xl">
-        <div class="card-body">
-            <h2 class="card-title">{{isLogInForm ? 'LogIn' : 'SignUp'}}</h2>
-            <div *ngIf="!isLogInForm">
-                <label class="form-control w-full max-w-xs my-4">
-                    <div class="label">
-                        <span class="label-text">First Name</span>
-                    </div>
-                    <input type="text" placeholder="Please enter your firstname"
-                        class="input input-bordered w-full max-w-xs" [(ngModel)]="firstName" />
-                </label>
-                <label class="form-control w-full max-w-xs my-4">
-                    <div class="label">
-                        <span class="label-text">Last Name</span>
-                    </div>
-                    <input type="text" placeholder="Please enter your lastname"
-                        class="input input-bordered w-full max-w-xs" [(ngModel)]="lastName" />
-                </label>
+<div class="modal-box">
+    <form method="dialog">
+        <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+    </form>
+    <div class="flex justify-center my-10">
+        <div class="card bg-base-300 w-96 shadow-xl">
+            <div class="card-body">
+                <h2 class="card-title">{{isLogInForm ? 'LogIn' : 'SignUp'}}</h2>
+                <div *ngIf="!isLogInForm">
+                    <label class="form-control w-full max-w-xs my-4">
+                        <div class="label">
+                            <span class="label-text">First Name</span>
+                        </div>
+                        <input type="text" placeholder="Please enter your firstname"
+                            class="input input-bordered w-full max-w-xs" [(ngModel)]="firstName" />
+                    </label>
+                    <label class="form-control w-full max-w-xs my-4">
+                        <div class="label">
+                            <span class="label-text">Last Name</span>
+                        </div>
+                        <input type="text" placeholder="Please enter your lastname"
+                            class="input input-bordered w-full max-w-xs" [(ngModel)]="lastName" />
+                    </label>
+                </div>
+                <div>
+                    <label class="form-control w-full max-w-xs my-4">
+                        <div class="label">
+                            <span class="label-text">Email</span>
+                        </div>
+                        <input type="email" placeholder="Please enter your email Id"
+                            class="input input-bordered w-full max-w-xs" [(ngModel)]="email" />
+                    </label>
+                    <label class="form-control w-full max-w-xs my-4">
+                        <div class="label">
+                            <span class="label-text">Password</span>
+                        </div>
+                        <input type="password" placeholder="Please enter your password"
+                            class="input input-bordered w-full max-w-xs" [(ngModel)]="password" />
+                    </label>
+                </div>
+                <p class="text-red-500">{{error}}</p>
+                <div class="card-actions justify-center">
+                    <button class="btn btn-primary" (click)="login()">{{isLogInForm ? 'LogIn' : 'SignUp'}}</button>
+                </div>
+                <div class="text-center">
+                    <p *ngIf="isLogInForm; else elseBlock">
+                        New user ? <span class="cursor-pointer text-green-500" (click)="isLogInForm = false">SignUp
+                            Here...</span></p>
+                    <ng-template #elseBlock>
+                        <p>already have account ? <span class="cursor-pointer text-green-500"
+                                (click)="isLogInForm = true">LogIn
+                                here...</span></p>
+                    </ng-template>
+                </div>
             </div>
-            <div>
-                <label class="form-control w-full max-w-xs my-4">
-                    <div class="label">
-                        <span class="label-text">Email</span>
-                    </div>
-                    <input type="email" placeholder="Please enter your email Id"
-                        class="input input-bordered w-full max-w-xs" [(ngModel)]="email" />
-                </label>
-                <label class="form-control w-full max-w-xs my-4">
-                    <div class="label">
-                        <span class="label-text">Password</span>
-                    </div>
-                    <input type="password" placeholder="Please enter your password"
-                        class="input input-bordered w-full max-w-xs" [(ngModel)]="password" />
-                </label>
-            </div>
-            <p class="text-red-500">{{error}}</p>
-            <div class="card-actions justify-center">
-                <button class="btn btn-primary" (click)="login()">{{isLogInForm ? 'LogIn' : 'SignUp'}}</button>
-            </div>
-            <div class="text-center">
-                <p *ngIf="isLogInForm; else elseBlock">
-                    New user ? <span class="cursor-pointer text-green-500" (click)="isLogInForm = false">SignUp
-                        Here...</span></p>
-                <ng-template #elseBlock>
-                    <p>already have account ? <span class="cursor-pointer text-green-500"
-                            (click)="isLogInForm = true">LogIn
-                            here...</span></p>
-                </ng-template>
-            </div>
-        </div>
-        <div *ngIf="showToster" class="toast toast-top toast-center">
-            <div class="alert alert-success">
-                <span>{{toastMessage}}</span>
+            <div *ngIf="showToster" class="toast toast-top toast-center">
+                <div class="alert alert-success">
+                    <span>{{toastMessage}}</span>
+                </div>
             </div>
         </div>
     </div>

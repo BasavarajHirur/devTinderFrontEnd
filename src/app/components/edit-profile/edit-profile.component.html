@@ -5,7 +5,7 @@
 <ng-template #elseBlock>
     <div class="my-4">
         <div class="flex justify-center gap-4">
-            <div class="flex justify-center">
+            <div class="flex justify-center edit-left">
                 <form [formGroup]="formGroup">
                     <div class="card bg-base-300 w-96 shadow-xl">
                         <div class="card-body">
@@ -79,7 +79,9 @@
                     </div>
                 </form>
             </div>
-            <app-user-card [user]="userData"></app-user-card>
+            <div class="edit-right">
+                <app-user-card [user]="userData"></app-user-card>
+            </div>
         </div>
         <div *ngIf="showToster" class="toast toast-top toast-center">
             <div class="alert alert-success">

@@ -1,0 +1,33 @@
+.edit-left {
+    transform: translateX(-20%);
+    animation: play 1s linear;
+}
+
+@keyframes play {
+    from {
+        transform: translateX(0%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(-20%);
+        opacity: 1;
+    }
+}
+
+.edit-right {
+    transform: translateX(-20%);
+    animation: play 1s linear;
+}
+
+@keyframes play {
+    from {
+        transform: translateX(0%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(-20%);
+        opacity: 1;
+    }
+}

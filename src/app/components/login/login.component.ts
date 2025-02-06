@@ -52,10 +52,11 @@ export class LoginComponent implements OnInit, OnDestroy {
         {
           next: res => {
             if (res) {
+              console.log(res);
               if (res.error) {
                 this.error = res.error.error.message;
                 if (res.error.status === 401) {
-                  this.router.navigate(['/login']);
+                  this.router.navigate(['/landing']);
                 }
               } else {
                 this.router.navigate(['']);
@@ -71,6 +72,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.$destroy))
       .subscribe(res => {
         if (res) {
+          console.log(res);
           if (res.error) {
             this.error = res.error.message;
           } else {
@@ -79,9 +81,8 @@ export class LoginComponent implements OnInit, OnDestroy {
             setTimeout(() => {
               this.showToster = false;
             }, 2000);
+            this.router.navigate(['/profile']);
           }
-        } else {
-          this.router.navigate(['/profile']);
         }
       })
   }

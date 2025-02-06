@@ -5,7 +5,8 @@
             <p>No connections Found</p>
         </div>
         <ng-template #elseBlock>
-            <div *ngFor="let connection of connections" class="grid grid-cols-[120px_auto] items-center gap-4 bg-base-300 w-[100%] my-4">
+            <div *ngFor="let connection of connections;let i=index"
+                class="grid grid-cols-[120px_auto] items-center gap-4 bg-base-300 w-[100%] my-4 connection-div">
                 <div class="flex items-center">
                     <img class="w-[100px] h-[100px] rounded-md" [src]="connection.photoUrl">
                 </div>
