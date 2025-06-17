@@ -1,1 +1,1 @@
-export const BASE_URL = 'http://localhost:3000';
+export const BASE_URL = '/api'; // change to url before app deployed ex: 'http://localhost:3000'
