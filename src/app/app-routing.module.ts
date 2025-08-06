@@ -7,6 +7,7 @@ import { ConnectionsComponent } from './page/connections/connections.component';
 import { RequestsComponent } from './page/requests/requests.component';
 import { authGuardGuard } from './service/auth-guard.guard';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { PremiumComponent } from './components/premium/premium.component';
 
 const routes: Routes = [
   { path: 'landing', component: LandingPageComponent },
@@ -15,7 +16,8 @@ const routes: Routes = [
       { path: '', component: FeedComponent },
       { path: 'profile', component: ProfileComponent },
       { path: 'connections', component: ConnectionsComponent },
-      { path: 'requests', component: RequestsComponent }
+      { path: 'requests', component: RequestsComponent },
+      { path: 'premium', component: PremiumComponent }
     ]
   },
 ];

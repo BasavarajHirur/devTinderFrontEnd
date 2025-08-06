@@ -25,6 +25,10 @@ import { UserCardShimmerComponent } from './components/shimmers/user-card-shimme
 import { RegisterFormShimmerComponent } from './components/shimmers/register-form-shimmer/register-form-shimmer.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { FeaturesComponent } from './components/features/features.component';
+import { PremiumComponent } from './components/premium/premium.component';
+import { PaymentService } from './service/payment/payment.service';
+import { paymentReducer } from './store/payment/payment.reducer';
+import { PaymentEffects } from './store/payment/payment.effects';
 
 @NgModule({
     declarations: [
@@ -42,7 +46,8 @@ import { FeaturesComponent } from './components/features/features.component';
         UserCardShimmerComponent,
         RegisterFormShimmerComponent,
         LandingPageComponent,
-        FeaturesComponent
+        FeaturesComponent,
+        PremiumComponent
     ],
     imports: [
         BrowserModule,
@@ -56,9 +61,10 @@ import { FeaturesComponent } from './components/features/features.component';
         StoreModule.forFeature('profilesData', profileReducer),
         StoreModule.forFeature('userData', userReducer),
         StoreModule.forFeature('requestsData', requestsReducer),
-        EffectsModule.forFeature([commonEfects, ProfileEfects, UserEfects, RequestEfects])
+        StoreModule.forFeature('paymentData', paymentReducer),
+        EffectsModule.forFeature([commonEfects, ProfileEfects, UserEfects, RequestEfects, PaymentEffects])
     ],
-    providers: [AuthService, ProfileService, UserService, ConnectionRequestService],
+    providers: [AuthService, ProfileService, UserService, ConnectionRequestService, PaymentService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

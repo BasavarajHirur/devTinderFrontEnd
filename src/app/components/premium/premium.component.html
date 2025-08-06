@@ -1,0 +1,19 @@
+<div class="flex w-full flex-col pt-4">
+    <div class="card bg-base-300 rounded-box grid h-80 place-items-center">
+        <h1>Gold</h1>
+        <ul>
+            <li>Chat with Other People</li>
+            <li>You can send 100 request per Day</li>
+        </ul>
+        <button class="btn btn-primary" (click)="makePayment('gold')">Buy Gold</button>
+    </div>
+    <div class="divider">OR</div>
+    <div class="card bg-base-300 rounded-box grid h-80 place-items-center">
+        <h1>Silver</h1>
+        <ul>
+            <li>Chat with Other People</li>
+            <li>You can send 10 request per Day</li>
+        </ul>
+        <button class="btn btn-secondary" (click)="makePayment('silver')">Buy Silver</button>
+    </div>
+</div>
