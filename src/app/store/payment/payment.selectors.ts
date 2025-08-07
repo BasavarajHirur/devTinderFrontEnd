@@ -7,3 +7,8 @@ export const selectOrderResponse = createSelector(
     selectState,
     (state: PaymentState) => state.orderResponse
 )
+
+export const selectIsUserPremium = createSelector(
+    selectState,
+    (state: PaymentState) => state.isUserPremium
+)   

@@ -1,4 +1,4 @@
-<div class="flex w-full flex-col pt-4">
+<div class="flex w-full flex-col pt-4" *ngIf="!isPremium; else premiumTemplate">
     <div class="card bg-base-300 rounded-box grid h-80 place-items-center">
         <h1>Gold</h1>
         <ul>
@@ -17,3 +17,12 @@
         <button class="btn btn-secondary" (click)="makePayment('silver')">Buy Silver</button>
     </div>
 </div>
+<ng-template #premiumTemplate>
+    <div class="card bg-base-300 rounded-box grid h-80 place-items-center">
+        <h1>You are a Premium User</h1>
+        <ul>
+            <li>You can chat with other people</li>
+            <li>You can send unlimited requests</li>
+        </ul>
+    </div>
+</ng-template>

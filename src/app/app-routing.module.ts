@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'landing', component: LandingPageComponent },
   {
     path: '', component: BodyComponent, canActivate: [authGuardGuard], children: [
-      { path: '', component: FeedComponent },
+      { path: 'feed', component: FeedComponent },
       { path: 'profile', component: ProfileComponent },
       { path: 'connections', component: ConnectionsComponent },
       { path: 'requests', component: RequestsComponent },

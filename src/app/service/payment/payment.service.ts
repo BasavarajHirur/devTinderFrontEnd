@@ -12,4 +12,8 @@ export class PaymentService {
   makePayment(type: string) {
     return this.http.post(BASE_URL + '/payment/order', { membershipType: type }, { withCredentials: true });
   }
+
+  premiumVerification() {
+    return this.http.get(BASE_URL + '/payment/premium/verify', { withCredentials: true });
+  }
 }

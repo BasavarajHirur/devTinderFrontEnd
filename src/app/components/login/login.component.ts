@@ -59,7 +59,7 @@ export class LoginComponent implements OnInit, OnDestroy {
                   this.router.navigate(['/landing']);
                 }
               } else {
-                this.router.navigate(['']);
+                this.router.navigate(['/feed']);
               }
             }
           }

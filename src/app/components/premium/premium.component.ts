@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { createOrder } from 'src/app/store/payment/payment.actions';
-import { selectOrderResponse } from 'src/app/store/payment/payment.selectors';
+import { createOrder, premiumVerification } from 'src/app/store/payment/payment.actions';
+import { selectIsUserPremium, selectOrderResponse } from 'src/app/store/payment/payment.selectors';
 
 declare var Razorpay: any; // Declare Razorpay globally
 
@@ -12,10 +12,12 @@ declare var Razorpay: any; // Declare Razorpay globally
 })
 export class PremiumComponent implements OnInit {
 
+  public isPremium: boolean = false;
+
   constructor(private store: Store) { }
 
   ngOnInit() {
-
+    this.getPremiumVerification();
   }
 
   makePayment(type: string) {
@@ -44,11 +46,19 @@ export class PremiumComponent implements OnInit {
             theme: {
               color: '#F37254'
             },
+            handler: this.getPremiumVerification()
           };
 
           const rzp = new Razorpay(options);
           rzp.open();
         }
       });
+  }
+
+  getPremiumVerification() {
+    this.store.dispatch(premiumVerification());
+    this.store.select(selectIsUserPremium).subscribe((isPremium) => {
+      this.isPremium = isPremium;
+    })
   }
 }
