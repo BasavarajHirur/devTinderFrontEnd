@@ -9,16 +9,12 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { commonEfects, commonReducer, ProfileEfects, profileReducer } from './store';
 import { FooterComponent, LoginComponent, NavBarComponent, ProfileComponent } from './components';
-import { BodyComponent, FeedComponent } from './page';
-import { AuthService, ProfileService } from './service';
+import { BodyComponent, ChatComponent, ConnectionsComponent, FeedComponent, HomePageComponent, RequestsComponent } from './page';
+import { AuthService, ChatService, ConnectionRequestService, PaymentService, ProfileService, UserService } from './service';
 import { userReducer } from './store/user/user.reducer';
 import { UserEfects } from './store/user/user.effects';
-import { UserService } from './service/user/user.service';
 import { UserCardComponent } from './components/user-card/user-card.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
-import { ConnectionsComponent } from './page/connections/connections.component';
-import { RequestsComponent } from './page/requests/requests.component';
-import { ConnectionRequestService } from './service/request-connection/connection-request.service';
 import { requestsReducer } from './store/connectionRequests/requests.reducer';
 import { RequestEfects } from './store/connectionRequests/requests.effects';
 import { UserCardShimmerComponent } from './components/shimmers/user-card-shimmer/user-card-shimmer.component';
@@ -26,9 +22,9 @@ import { RegisterFormShimmerComponent } from './components/shimmers/register-for
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { FeaturesComponent } from './components/features/features.component';
 import { PremiumComponent } from './components/premium/premium.component';
-import { PaymentService } from './service/payment/payment.service';
 import { paymentReducer } from './store/payment/payment.reducer';
 import { PaymentEffects } from './store/payment/payment.effects';
+import { ChatEffects, chatReducer } from './store/chat';
 
 @NgModule({
     declarations: [
@@ -47,7 +43,9 @@ import { PaymentEffects } from './store/payment/payment.effects';
         RegisterFormShimmerComponent,
         LandingPageComponent,
         FeaturesComponent,
-        PremiumComponent
+        PremiumComponent,
+        ChatComponent,
+        HomePageComponent
     ],
     imports: [
         BrowserModule,
@@ -62,9 +60,10 @@ import { PaymentEffects } from './store/payment/payment.effects';
         StoreModule.forFeature('userData', userReducer),
         StoreModule.forFeature('requestsData', requestsReducer),
         StoreModule.forFeature('paymentData', paymentReducer),
-        EffectsModule.forFeature([commonEfects, ProfileEfects, UserEfects, RequestEfects, PaymentEffects])
+        StoreModule.forFeature('chat', chatReducer),
+        EffectsModule.forFeature([commonEfects, ProfileEfects, UserEfects, RequestEfects, PaymentEffects, ChatEffects])
     ],
-    providers: [AuthService, ProfileService, UserService, ConnectionRequestService, PaymentService],
+    providers: [AuthService, ProfileService, UserService, ConnectionRequestService, PaymentService, ChatService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

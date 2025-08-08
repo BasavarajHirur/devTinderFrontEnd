@@ -36,7 +36,7 @@ export class commonEfects {
             switchMap(() => this.service.logout().pipe(
                 map(() => {
                     this.router.navigate(['/landing']);
-                    return profileAction.getProfile({ profileDetails: [] });
+                    return profileAction.getProfile({ profileDetails: null });
                 }),
                 catchError((error) => of())
             ))

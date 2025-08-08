@@ -21,10 +21,16 @@
                     they just saw something. It seemed obvious to them after a while
                 </h2>
                 <div class="flex flex-wrap items-center justify-center gap-2">
-                    <button onclick="my_modal_2.showModal()"
+                    <button onclick="my_modal_2.showModal()" *ngIf="!isLoggedIn; else findMatches"
                         class="mb-2 inline-flex items-center gap-2 rounded bg-blue-600 px-5 py-3 font-semibold text-white shadow-sm hover:bg-blue-500">
-                        <span>LogIn to explore</span>
+                        <span>{{'LogIn to explore'}}</span>
                     </button>
+                    <ng-template #findMatches>
+                        <button (click)="goToFeed()"
+                            class="mb-2 inline-flex items-center gap-2 rounded bg-blue-600 px-5 py-3 font-semibold text-white shadow-sm hover:bg-blue-500">
+                            <span>{{'Find Matches'}}</span>
+                        </button>
+                    </ng-template>
                     <a href="#features"
                         class="mb-2 mr-2 inline-flex items-center gap-2 rounded bg-gray-800 px-5 py-3 font-semibold text-white shadow-sm hover:bg-gray-700 sm:ml-0">
                         <span>Learn More</span>

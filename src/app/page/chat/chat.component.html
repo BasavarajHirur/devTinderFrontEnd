@@ -1,0 +1,19 @@
+<div class="w-1/2 mx-auto border border-gray-600 h-[70vh] m-5 flex flex-col">
+    <h1 class="p-5 border-b border-gray-600">Chat</h1>
+    <div class="flex-1 overflow-scroll p-5">
+        <div *ngFor="let message of messages;let i=index">
+            <div class="chat chat-start" [class]="message.firstName === userInfo.firstName ? 'chat-end' : 'chat-start'">
+                <div class="chat-header">
+                    {{message.firstName}} {{message.lastName}}
+                    <time class="text-xs opacity-50">{{message.time}}</time>
+                </div>
+                <div class="chat-bubble">{{message.text}}</div>
+                <div class="chat-footer opacity-50">Seen</div>
+            </div>
+        </div>
+    </div>
+    <div class="p-5 border-t border-gray-600 flex gap-2 items-center">
+        <input class="flex-1 border border-gray-500 text-white rounded-md p-2" type="text" [(ngModel)]="newMessage">
+        <button class="btn btn-primary" (click)="sendMessage()">send</button>
+    </div>
+</div>

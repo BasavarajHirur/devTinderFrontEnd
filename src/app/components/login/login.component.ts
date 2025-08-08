@@ -12,8 +12,8 @@ import { login, selectLogInResponse, selectSignUpResponse, signup } from 'src/ap
 export class LoginComponent implements OnInit, OnDestroy {
   public firstName: any;
   public lastName: any;
-  public email: any = 'basavaraj.hirur746@gmail.com';
-  public password: any = "Basav@123";
+  public email: any = '';
+  public password: any = "";
   public error: any;
   public isLogInForm = true;
   public showToster = false;
@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit, OnDestroy {
               if (res.error) {
                 this.error = res.error.error.message;
                 if (res.error.status === 401) {
-                  this.router.navigate(['/landing']);
+                  this.router.navigate(['/']);
                 }
               } else {
                 this.router.navigate(['/feed']);
