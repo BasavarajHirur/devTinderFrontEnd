@@ -1,6 +1,6 @@
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { ChatService } from "src/app/service";
-import { getChats, loadChats } from "./chat.actions";
+import { getChatList, getIndividualChat, loadChatList, loadIndividualChat } from "./chat.actions";
 import { catchError, map, of, switchMap } from "rxjs";
 import { Injectable } from "@angular/core";
 
@@ -14,10 +14,20 @@ export class ChatEffects {
 
     public loadChats$ = createEffect(() => {
         return this.actions$.pipe(
-            ofType(loadChats),
-            switchMap(({ targetUserId }) => this.chatService.getChatMessages(targetUserId).pipe(
-                map((chats) => getChats({ chats })),
-                catchError((error) => of(getChats({ chats: [] })))
+            ofType(loadChatList),
+            switchMap(() => this.chatService.getChatList().pipe(
+                map((chatsList) => getChatList({ chatsList })),
+                catchError((error) => of(getChatList({ chatsList: [] })))
+            ))
+        )
+    })
+
+    public loadIndividualChats$ = createEffect(() => {
+        return this.actions$.pipe(
+            ofType(loadIndividualChat),
+            switchMap(({ targetUserId }) => this.chatService.getIndividualChatMessages(targetUserId).pipe(
+                map((chats) => getIndividualChat({ chats })),
+                catchError((error) => of(getIndividualChat({ chats: null })))
             ))
         )
     })

@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
 import { loadConnections } from 'src/app/store/user/user.actions';
@@ -12,7 +13,7 @@ import { selectConnections } from 'src/app/store/user/user.selectors';
 export class ConnectionsComponent implements OnInit, OnDestroy {
   public connections: any = [];
   private $destroy = new Subject<void>();
-  constructor(private store: Store) { }
+  constructor(private store: Store, private router: Router) { }
 
   ngOnInit(): void {
     this.store.dispatch(loadConnections());
@@ -30,6 +31,11 @@ export class ConnectionsComponent implements OnInit, OnDestroy {
           }
         }
       )
+  }
+
+  openChats(targetId: string) {
+    this.router.navigate(['/chat-page']);
+    localStorage.setItem('targetId', targetId);
   }
 
   ngOnDestroy(): void {

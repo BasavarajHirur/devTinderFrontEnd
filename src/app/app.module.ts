@@ -7,10 +7,35 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { commonEfects, commonReducer, ProfileEfects, profileReducer } from './store';
-import { FooterComponent, LoginComponent, NavBarComponent, ProfileComponent } from './components';
-import { BodyComponent, ChatComponent, ConnectionsComponent, FeedComponent, HomePageComponent, RequestsComponent } from './page';
-import { AuthService, ChatService, ConnectionRequestService, PaymentService, ProfileService, UserService } from './service';
+import {
+    commonEfects,
+    commonReducer,
+    ProfileEfects,
+    profileReducer
+} from './store';
+import {
+    FooterComponent,
+    LoginComponent,
+    NavBarComponent,
+    ProfileComponent
+} from './components';
+import {
+    BodyComponent,
+    ChatComponent,
+    ChatPageComponent,
+    ConnectionsComponent,
+    FeedComponent,
+    HomePageComponent,
+    RequestsComponent
+} from './page';
+import {
+    AuthService,
+    ChatService,
+    ConnectionRequestService,
+    PaymentService,
+    ProfileService,
+    UserService
+} from './service';
 import { userReducer } from './store/user/user.reducer';
 import { UserEfects } from './store/user/user.effects';
 import { UserCardComponent } from './components/user-card/user-card.component';
@@ -45,7 +70,8 @@ import { ChatEffects, chatReducer } from './store/chat';
         FeaturesComponent,
         PremiumComponent,
         ChatComponent,
-        HomePageComponent
+        HomePageComponent,
+        ChatPageComponent
     ],
     imports: [
         BrowserModule,

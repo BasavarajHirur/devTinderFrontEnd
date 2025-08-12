@@ -3,12 +3,24 @@ import { createAction, props } from "@ngrx/store";
 const LOAD_CHATS = '[Chat] Load Chats';
 const GET_CHATS = '[Chat] Get Chats';
 
-export const loadChats = createAction(
-    LOAD_CHATS,
+const LOAD_INDIVIDUAL_CHATS = '[Chat]  load individual chats'
+const GET_INDIVIDUAL_CHAT = '[Chat] get individual chat'
+
+export const loadChatList = createAction(
+    LOAD_CHATS
+)
+
+export const getChatList = createAction(
+    GET_CHATS,
+    props<{ chatsList: any }>()
+)
+
+export const loadIndividualChat = createAction(
+    LOAD_INDIVIDUAL_CHATS,
     props<{ targetUserId: string }>()
 )
 
-export const getChats = createAction(
-    GET_CHATS,
+export const getIndividualChat = createAction(
+    GET_INDIVIDUAL_CHAT,
     props<{ chats: any }>()
 )

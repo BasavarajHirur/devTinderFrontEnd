@@ -3,7 +3,12 @@ import { ChatState } from "./chat.reducer";
 
 const selectChatState = createFeatureSelector<ChatState>('chat');
 
-export const selectChats = createSelector(
+export const selectChatList = createSelector(
     selectChatState,
-    (state: ChatState) => state.chats
+    (state: ChatState) => state.chatsList
+)
+
+export const selectIndividualChats = createSelector(
+    selectChatState,
+    (state: ChatState) => state.individualChats
 )

@@ -8,7 +8,7 @@ import { RequestsComponent } from './page/requests/requests.component';
 import { authGuardGuard } from './service/auth-guard.guard';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { PremiumComponent } from './components/premium/premium.component';
-import { ChatComponent, HomePageComponent } from './page';
+import { ChatComponent, ChatPageComponent, HomePageComponent } from './page';
 
 const routes: Routes = [
   {
@@ -23,7 +23,7 @@ const routes: Routes = [
       { path: 'connections', component: ConnectionsComponent },
       { path: 'requests', component: RequestsComponent },
       { path: 'premium', component: PremiumComponent },
-      { path: 'chat/:toUserId', component: ChatComponent }
+      { path: 'chat-page', component: ChatPageComponent },
     ]
   }
 ];
