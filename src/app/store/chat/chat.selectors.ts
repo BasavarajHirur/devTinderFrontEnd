@@ -8,7 +8,12 @@ export const selectChatList = createSelector(
     (state: ChatState) => state.chatsList
 )
 
+export const selectChat = createSelector(
+    selectChatState,
+    (state: ChatState) => state.chat
+)
+
 export const selectIndividualChats = createSelector(
     selectChatState,
-    (state: ChatState) => state.individualChats
+    (state: ChatState) => state.messages
 )

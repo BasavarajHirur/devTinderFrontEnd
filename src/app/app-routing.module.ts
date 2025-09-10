@@ -23,7 +23,7 @@ const routes: Routes = [
       { path: 'connections', component: ConnectionsComponent },
       { path: 'requests', component: RequestsComponent },
       { path: 'premium', component: PremiumComponent },
-      { path: 'chat-page', component: ChatPageComponent },
+      { path: 'chat-page/:targetUserId', component: ChatPageComponent },
     ]
   }
 ];

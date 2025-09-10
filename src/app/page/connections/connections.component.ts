@@ -33,11 +33,6 @@ export class ConnectionsComponent implements OnInit, OnDestroy {
       )
   }
 
-  openChats(targetId: string) {
-    this.router.navigate(['/chat-page']);
-    localStorage.setItem('targetId', targetId);
-  }
-
   ngOnDestroy(): void {
     this.$destroy.next();
     this.$destroy.complete();

@@ -1,15 +1,17 @@
 import { createReducer, on } from "@ngrx/store";
-import { getChatList, getIndividualChat } from "./chat.actions";
+import { getChat, getChatList, getMessages } from "./chat.actions";
 
 export interface ChatState {
     chatsList: any,
-    individualChats: any,
+    chat: any,
+    messages: any,
     error: string | null
 }
 
 export const initialChatState: ChatState = {
     chatsList: [],
-    individualChats: [],
+    chat: null,
+    messages: [],
     error: null
 };
 
@@ -18,9 +20,12 @@ export const chatReducer = createReducer(
     on(getChatList,
         (state, { chatsList }) => ({ ...state, chatsList, error: null })
     ),
-    on(getIndividualChat,
-        (state, { chats }) => {
-            return ({ ...state, individualChats: chats, error: null })
+    on(getChat,
+        (state, { chat }) => ({ ...state, chat, error: null })
+    ),
+    on(getMessages,
+        (state, { messages }) => {
+            return ({ ...state, messages, error: null })
         }
     ),
 )
