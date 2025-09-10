@@ -31,7 +31,8 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/assets/tailwind.css"
+              "src/assets/tailwind.css",
+              "node_modules/swiper/swiper-bundle.min.css"
             ],
             "scripts": []
           },

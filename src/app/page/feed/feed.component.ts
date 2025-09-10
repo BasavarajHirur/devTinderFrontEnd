@@ -12,7 +12,9 @@ import { selectUserFeeds } from 'src/app/store/user/user.selectors';
 export class FeedComponent implements OnInit, OnDestroy {
 
   public users: any[] = [];
+  public selectedIndex = 0;
   private $destroy = new Subject<void>();
+
   constructor(private store: Store) { }
 
   ngOnInit(): void {
@@ -31,6 +33,18 @@ export class FeedComponent implements OnInit, OnDestroy {
           }
         }
       )
+  }
+
+  showPrev(i: any) {
+    if (this.selectedIndex > 0) {
+      this.selectedIndex = i - 1;
+    }
+  }
+
+  showNext(i: any) {
+    if (this.selectedIndex < this.users.length - 1) {
+      this.selectedIndex = i + 1;
+    }
   }
 
   ngOnDestroy(): void {

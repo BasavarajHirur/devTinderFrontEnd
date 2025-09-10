@@ -2,7 +2,18 @@
     <h2 class="text-bold text-2xl text-center my-5">No more users found</h2>
 </div>
 <ng-template #elseBlock>
-    <div class="flex justify-center my-5 gap-2">
-        <app-user-card [user]="users[0]"></app-user-card>
+    <div class="container">
+        <!-- <app-user-card [user]="users[0]"></app-user-card> -->
+        <div class="slider-container">
+            <div class="slider-item" *ngFor="let user of users; let i=index" [class]="{
+            'selected': i === selectedIndex,
+            'hide-left':i < selectedIndex-1,
+            'hide-right':i > selectedIndex+1
+        }">
+                <div class="slider-img" (panright)="showPrev(i)" (panleft)="showNext(i)">
+                    <app-user-card [user]="user"></app-user-card>
+                </div>
+            </div>
+        </div>
     </div>
 </ng-template>

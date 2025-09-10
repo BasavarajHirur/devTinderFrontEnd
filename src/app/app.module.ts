@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { BrowserModule, HammerModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -79,6 +79,7 @@ import { ChatEffects, chatReducer } from './store/chat';
         FormsModule,
         HttpClientModule,
         ReactiveFormsModule,
+        HammerModule,
         StoreModule.forRoot({}, {}),
         EffectsModule.forRoot([]),
         StoreModule.forFeature('commonData', commonReducer),
@@ -90,6 +91,7 @@ import { ChatEffects, chatReducer } from './store/chat';
         EffectsModule.forFeature([commonEfects, ProfileEfects, UserEfects, RequestEfects, PaymentEffects, ChatEffects])
     ],
     providers: [AuthService, ProfileService, UserService, ConnectionRequestService, PaymentService, ChatService],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule { }
