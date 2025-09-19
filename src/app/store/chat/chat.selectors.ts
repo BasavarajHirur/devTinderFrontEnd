@@ -12,8 +12,3 @@ export const selectChat = createSelector(
     selectChatState,
     (state: ChatState) => state.chat
 )
-
-export const selectIndividualChats = createSelector(
-    selectChatState,
-    (state: ChatState) => state.messages
-)

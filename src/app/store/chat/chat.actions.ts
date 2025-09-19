@@ -6,9 +6,6 @@ const GET_CHAT_LIST = '[Chat] Get Chat list';
 const LOAD_CHAT = '[Chat]  load chat';
 const GET_CHAT = '[Chat] get chat';
 
-const LOAD_MESSAGES = '[Chat] Load messages';
-const GET_MESSAGES = '[Chat] Get messages';
-
 export const loadChatList = createAction(
     LOAD_CHAT_LIST
 )
@@ -26,14 +23,4 @@ export const loadChat = createAction(
 export const getChat = createAction(
     GET_CHAT,
     props<{ chat: any }>()
-)
-
-export const loadMessages = createAction(
-    LOAD_MESSAGES,
-    props<{ chatId: string }>()
-)
-
-export const getMessages = createAction(
-    GET_MESSAGES,
-    props<{ messages: any }>()
 )

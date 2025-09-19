@@ -50,6 +50,7 @@ import { PremiumComponent } from './components/premium/premium.component';
 import { paymentReducer } from './store/payment/payment.reducer';
 import { PaymentEffects } from './store/payment/payment.effects';
 import { ChatEffects, chatReducer } from './store/chat';
+import { MessageEffects, messageReducer } from './store/message';
 
 @NgModule({
     declarations: [
@@ -88,7 +89,8 @@ import { ChatEffects, chatReducer } from './store/chat';
         StoreModule.forFeature('requestsData', requestsReducer),
         StoreModule.forFeature('paymentData', paymentReducer),
         StoreModule.forFeature('chat', chatReducer),
-        EffectsModule.forFeature([commonEfects, ProfileEfects, UserEfects, RequestEfects, PaymentEffects, ChatEffects])
+        StoreModule.forFeature('message', messageReducer),
+        EffectsModule.forFeature([commonEfects, ProfileEfects, UserEfects, RequestEfects, PaymentEffects, ChatEffects, MessageEffects])
     ],
     providers: [AuthService, ProfileService, UserService, ConnectionRequestService, PaymentService, ChatService],
     bootstrap: [AppComponent],

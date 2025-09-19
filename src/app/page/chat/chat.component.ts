@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
 import { selectLoggedInProfile } from 'src/app/store';
@@ -8,7 +8,7 @@ import { selectLoggedInProfile } from 'src/app/store';
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.scss']
 })
-export class ChatComponent implements OnInit, OnDestroy {
+export class ChatComponent implements OnInit, OnChanges, OnDestroy {
 
   @Input('messages') messages: any[] = [];
   public userInfo: any;
@@ -18,6 +18,14 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getCurrentUser();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['messages']) {
+      // Messages input has changed
+      this.messages = changes['messages'].currentValue;
+      console.log('Messages updated:', this.messages);
+    }
   }
 
   getCurrentUser() {
